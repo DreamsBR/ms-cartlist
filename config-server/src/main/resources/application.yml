@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      server:
+        git:
+          default-label: ${GIT_BRANCH:main}
+          ignore-local-ssh-settings: false
+          uri: ${GIT}
+  security:
+    user:
+      name: ${CONFIG_SERVER_USERNAME:admin}
+      password: ${CONFIG_SERVER_PASSWORD:admin}
